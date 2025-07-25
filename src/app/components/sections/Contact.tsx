@@ -40,7 +40,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-gray-500 uppercase">Phone</h4>
-                    <a href="tel:+15551234567" className="text-lg font-medium text-gray-900 hover:text-blue-600 transition mt-1 block">+1 (555) 123-4567</a>
+                    <a href="tel:+15551234567" className="text-lg font-medium text-gray-900 hover:text-blue-600 transition mt-1 block">+65 (1234 5678)</a>
                   </div>
                 </div>
 
@@ -53,7 +53,7 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-gray-500 uppercase">Location</h4>
-                    <p className="text-lg font-medium text-gray-900 mt-1">New York, NY</p>
+                    <p className="text-lg font-medium text-gray-900 mt-1">Orchard Road, OR</p>
                     <p className="text-sm text-gray-500 mt-2">Open Monday - Friday, 9am - 5pm EST</p>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                   id="phone"
                   name="phone"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+65 (1234 5678)"
                 />
               </div>
 

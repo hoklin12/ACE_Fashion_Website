@@ -10,19 +10,9 @@ import Footer from "@/app/components/sections/Footer"
 import Services from "./components/sections/material"
 
 export default function HomePage() {
-  // const [mousePosition] = useState({ x: 0, y: 0 })
 
   return (
     <div className="relative">
-      {/* Cursor Glow Effect */}
-      {/* <div
-        className="fixed w-96 h-96 rounded-full pointer-events-none z-0 opacity-20 blur-3xl transition-all duration-300"
-        style={{
-          background: "radial-gradient(circle, rgba(139,69,255,0.4) 0%, transparent 70%)",
-          left: mousePosition.x - 192,
-          top: mousePosition.y - 192,
-        }}
-      /> */}
       <Navigation />
       <Hero />
       <Services />
