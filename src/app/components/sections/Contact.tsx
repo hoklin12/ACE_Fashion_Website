@@ -53,7 +53,14 @@ export default function Contact() {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-medium text-gray-500 uppercase">Location</h4>
-                    <p className="text-lg font-medium text-gray-900 mt-1">Orchard Road, OR</p>
+                    <a
+                      href="https://www.google.com/maps?q=Orchard+Road,+OR"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-medium text-gray-900 mt-1 hover:text-blue-600 transition block"
+                    >
+                      Orchard Road, OR
+                    </a>
                     <p className="text-sm text-gray-500 mt-2">Open Monday - Friday, 9am - 5pm EST</p>
                   </div>
                 </div>
@@ -92,7 +99,7 @@ export default function Contact() {
                   id="name"
                   name="name"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition text-gray-900 placeholder-gray-400"
-                  placeholder="John Doe"
+                  placeholder="Shiro Tan"
                   required
                 />
               </div>
