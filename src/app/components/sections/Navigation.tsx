@@ -26,7 +26,7 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Left: Logo */}
-        <div className="text-xl font-black text-black tracking-wide">
+        <div className="text-4xl font-black text-black tracking-wide">
             <span className="hover:text-indigo-600">A</span>
             <span className="hover:text-orange-600">C</span>
             <span className="hover:text-green-600">E</span>

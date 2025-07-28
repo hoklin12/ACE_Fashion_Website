@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image"; // ✅ Import Image
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const slides = [
   { id: 1, image: "/banner1.jpg" },
@@ -12,11 +12,22 @@ const slides = [
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState<boolean[]>(slides.map(() => false));
+  const [isMobile, setIsMobile] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  // Detect mobile screen
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Preload images
   useEffect(() => {
     slides.forEach((slide, index) => {
-      const img = new window.Image(); // browser image preloading
+      const img = new window.Image();
       img.src = slide.image;
       img.onload = () => {
         setLoaded((prev) => {
@@ -28,7 +39,7 @@ export default function Hero() {
     });
   }, []);
 
-  // Auto switch every 5 seconds
+  // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -37,13 +48,37 @@ export default function Hero() {
   }, []);
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index);
+    const validIndex = (index + slides.length) % slides.length;
+    setCurrentSlide(validIndex);
+  };
+
+  // Swipe for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    touchEndX.current = e.changedTouches[0].clientX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    const delta = touchStartX.current - touchEndX.current;
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) goToSlide(currentSlide + 1); // swipe left
+      else goToSlide(currentSlide - 1); // swipe right
+    }
   };
 
   return (
     <section className="relative w-full bg-white pt-10">
-      {/* Slides with 16:9 ratio */}
-      <div className="relative w-full aspect-video overflow-hidden">
+      <div
+        className="relative w-full aspect-video overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -58,7 +93,7 @@ export default function Hero() {
               src={slide.image}
               alt={`Slide ${index + 1}`}
               fill
-              priority // ✅ forces eager loading
+              priority
               className="object-cover"
               sizes="100vw"
             />
