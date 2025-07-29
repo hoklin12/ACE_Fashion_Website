@@ -10,7 +10,7 @@ export default function About() {
           {/* Text Side */}
           <div className="w-full lg:w-1/2 ">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-              About ACE
+              About Us
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
               Enjoy all your favorite wellness content in one convenient place.
