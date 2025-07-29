@@ -9,12 +9,12 @@ export default function About() {
         <div className="flex flex-col lg:flex-row items-center lg:items-center gap-12 lg:gap-20">
           {/* Text Side */}
           <div className="w-full lg:w-1/2 ">
-            <h2 className="text-4xl md:text-5xl font-bold text-purple-900 mb-6">
-              About WELLIFIZE
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+              About ACE
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
               Enjoy all your favorite wellness content in one convenient place.
-              WELLIFIZE seamlessly integrates the four pillars of wellness,
+              ACE seamlessly integrates the four pillars of wellness,
               transforming everyday living into a health-centered experience and
               increasing your longevity.
             </p>
