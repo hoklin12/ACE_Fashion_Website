@@ -7,7 +7,7 @@ import Testimonials from "@/app/components/sections/OurPartners"
 import About from "@/app/components/sections/About"
 import Contact from "@/app/components/sections/Contact"
 import Footer from "@/app/components/sections/Footer"
-import MaterialsCarousel from "@/app/components/sections/Materials"
+import MaterialsCarousel from "./components/sections/materials"
 
 export default function HomePage() {
 
