@@ -7,7 +7,7 @@ import Testimonials from "@/app/components/sections/OurPartners"
 import About from "@/app/components/sections/About"
 import Contact from "@/app/components/sections/Contact"
 import Footer from "@/app/components/sections/Footer"
-import Services from "./components/sections/materials"
+import MaterialsCarousel from "@/app/components/sections/Materials"
 
 export default function HomePage() {
 
@@ -15,7 +15,7 @@ export default function HomePage() {
     <div className="relative">
       <Navigation />
       <Hero />
-      <Services />
+      <MaterialsCarousel />
       <Portfolio />
       <About />
       <Testimonials />
