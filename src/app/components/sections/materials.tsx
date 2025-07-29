@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import RevealCard from "@/app/components/util/Revealcard";
@@ -51,7 +51,7 @@ export default function MaterialsCarousel() {
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     if (!scrollRef.current) return;
     const container = scrollRef.current;
     const cardWidth = container.scrollWidth / materials.length;
@@ -60,11 +60,11 @@ export default function MaterialsCarousel() {
       left: scrollPosition,
       behavior: 'smooth'
     });
-  };
+  }, [materialsPerView]);
 
   useEffect(() => {
     scrollToIndex(currentIndex);
-  }, [currentIndex]);
+  }, [currentIndex, scrollToIndex]);
 
   const visibleMaterials = materials.slice(
     currentIndex * materialsPerView,
