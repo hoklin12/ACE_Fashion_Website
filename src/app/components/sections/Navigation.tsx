@@ -34,7 +34,7 @@ export default function Navigation() {
 
         {/* Center: Nav links */}
         <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center space-x-10">
-          {["Home", "Materials", "Portfolio", "About", "Partners", "Contact"].map(
+          {["Home", "Materials", "Features", "About", "Partners", "Contact"].map(
             (item) => (
               <Link
                 key={item}

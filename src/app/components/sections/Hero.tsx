@@ -73,7 +73,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full bg-white pt-10">
+    <section id="home" className="relative w-full bg-white pt-10">
       <div
         className="relative w-full aspect-video overflow-hidden"
         onTouchStart={handleTouchStart}

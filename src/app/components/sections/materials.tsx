@@ -98,7 +98,7 @@ export default function MaterialsCarousel() {
   }, [autoScroll]);
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section id="materials" className="py-20 bg-white overflow-hidden">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Materials</h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">

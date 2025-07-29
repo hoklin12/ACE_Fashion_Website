@@ -18,7 +18,7 @@ const totalLogoWidth = logoWidth + spacing;
 
 export default function OurPartners() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section id="partners" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
           Our Partners
