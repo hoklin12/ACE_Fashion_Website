@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import RevealCard from "@/app/components/util/Revealcard"; // Assuming this is a simple card for mobile
+import RevealCard from "@/app/components/util/Revealcard"; 
 
 const materials = [
   { title: "Organic Cotton", description: "Eco-friendly and soft for daily wear.", image: "/material.jpg" },
@@ -60,23 +60,18 @@ export default function MaterialsCarousel() {
     if (isMobile) return;
   
     if (expandedCardIndex === index) {
-      // Collapse the card if clicking the same one
       setIsExpanded(false);
       setTimeout(() => setExpandedCardIndex(null), 300);
     } else {
       if (isExpanded) {
-        // Switch directly to the new card without closing first
         setExpandedCardIndex(index);
       } else {
-        // Expand the clicked card
         setExpandedCardIndex(index);
         setIsExpanded(true);
       }
     }
   };
-  
 
-  // Animation Variants
   const slideVariants: Variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? '100%' : '-100%',
@@ -88,14 +83,14 @@ export default function MaterialsCarousel() {
       x: 0,
       opacity: 1,
       scale: 1,
-      transition: { type: "spring", stiffness: 960, damping: 30 },
+      transition: { type: "spring", stiffness: 960, damping: 50 },
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? '100%' : '-100%',
       opacity: 0,
       scale: 0.98,
-      transition: { type: "spring", stiffness: 960, damping: 30 },
+      transition: { type: "spring", stiffness: 960, damping: 50 },
     }),
   };
 
@@ -198,7 +193,6 @@ export default function MaterialsCarousel() {
                   else if (swipe > swipeConfidenceThreshold) paginate(-1);
                 }}
               >
-                {/* Flex container replacing grid */}
                 <motion.div
                   className="flex h-full w-full"
                   style={{ gap: isMedium ? 24 : 32 }}
@@ -217,7 +211,8 @@ export default function MaterialsCarousel() {
                         initial="initial"
                         animate={isCardExpanded ? "expanded" : "collapsed"}
                         onClick={() => handleCardClick(i)}
-                        className="relative bg-white border border-gray-200 shadow-md cursor-pointer overflow-hidden flex flex-col"
+                        /* MODIFIED: Added 'group' class for hover effect */
+                        className="relative bg-white border border-gray-200 shadow-md cursor-pointer overflow-hidden flex flex-col group"
                         style={{
                           flexGrow: isCardExpanded ? 2 : 0.5,
                           flexBasis: isCardExpanded ? "auto" : "0",
@@ -229,7 +224,6 @@ export default function MaterialsCarousel() {
                           transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
                         }}
                       >
-                        {/* Background image */}
                         <div className="w-full h-full relative z-0">
                           <Image
                             src={material.image}
@@ -242,9 +236,19 @@ export default function MaterialsCarousel() {
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end justify-center p-6">
                             <h3 className="text-lg font-semibold text-white">{material.title}</h3>
                           </div>
+                          {/* ADDED: "See More" overlay on hover for md+ screens */}
+                          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center">
+                            <div className="text-white text-center">
+                              <div className="flex items-center justify-center mb-2">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                              </div>
+                              <p className="text-sm font-medium text-white">See More</p>
+                            </div>
+                          </div>
                         </div>
-
-                        {/* Expanded detail content */}
                         <AnimatePresence>
                           {isCardExpanded && (
                             <motion.div

@@ -60,14 +60,14 @@ export default function Feature() {
         {Object.entries(groupedByCategory).map(([category, items], index) => (
           <div key={category} className="mb-12">
             <h3 className="mb-10">
-              <span className="inline-block bg-gray-200 backdrop-blur-sm px-4 py-2 text-2xl font-semibold text-gray-800">
+              <span className="inline-block  backdrop-blur-sm px-4 py-2 text-3xl font-semibold text-gray-800">
                 {category}
               </span>
             </h3>
 
             <div className="relative">
-              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-              <div className="hidden md:block absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+              <div className="hidden md:block absolute -left-5 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+              <div className="hidden md:block absolute -right-5 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
               <div 
                 ref={el => setScrollContainerRef(el, index)}
@@ -80,7 +80,7 @@ export default function Feature() {
                     return (
                       <div
                         key={product.id}
-                        className="w-[260px] sm:w-[280px] md:w-[360px] h-[420px] md:h-[480px] flex-shrink-0 bg-white overflow-hidden flex flex-col shadow-sm"
+                        className="w-[280px] sm:w-[300px] md:w-[380px] h-[430px] md:h-[480px] flex-shrink-0 bg-white overflow-hidden flex flex-col shadow-sm"
                         onClick={() => handleImageClick(product.id)}
                       >
                         {/* Image Container */}
@@ -88,18 +88,18 @@ export default function Feature() {
                           <Image
                             src={product.image}
                             alt={product.title}
-                            width={768}
+                            width={680}
                             height={1024}
-                            className={`object-contain w-full h-full transition-opacity duration-300 ${
+                            className={`object-contain  transition-opacity duration-300 ${
                               isActive ? "opacity-0 md:opacity-100" : "opacity-100"
                             }`}
                           />
                           <Image
                             src={product.hoverImage}
                             alt={`${product.title} hover`}
-                            width={768}
+                            width={680}
                             height={1024}
-                            className={`object-contain w-full h-full absolute top-0 left-0 transition-opacity duration-300 ${
+                            className={`object-contain absolute top-0 left-0 transition-opacity duration-300 ${
                               isActive ? "opacity-100" : "opacity-0 md:hover:opacity-100"
                             }`}
                           />

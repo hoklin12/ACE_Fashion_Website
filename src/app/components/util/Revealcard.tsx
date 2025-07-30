@@ -41,7 +41,8 @@ export default function RevealCard({ title, description, image, width = 768, hei
             WebkitBackfaceVisibility: "hidden"
           }}
         >
-          <div className="bg-white border border-gray-200 shadow-md p-4 h-full w-full flex flex-col">
+          {/* MODIFIED: Changed p-4 to md:p-4 to remove padding on small screens */}
+          <div className="bg-white border border-gray-200 shadow-md md:p-4 h-full w-full flex flex-col">
             <div className="relative w-full h-[340px] md:h-[400px] overflow-hidden group cursor-pointer flex-shrink-0">
               <Image
                 src={image}
@@ -65,7 +66,7 @@ export default function RevealCard({ title, description, image, width = 768, hei
                 </div>
               </div>
             </div>
-            <h3 className="text-sm font-semibold text-gray-800 text-center mt-4 flex-shrink-0">{title}</h3>
+            <h3 className="text-md font-semibold text-gray-800 text-center mt-6 flex-shrink-0">{title}</h3>
           </div>
         </div>
 
