@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import RevealCard from "@/app/components/util/Revealcard";
 
 const materials = [
@@ -71,22 +71,37 @@ export default function MaterialsCarousel() {
     (currentIndex + 1) * materialsPerView
   );
 
-  const slideVariants = {
+  const slideVariants: Variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.98,
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "tween" as const, ease: "easeInOut", duration: 0.5 },
+        opacity: { duration: 0.4 },
+        scale: { duration: 0.4 },
+      },
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.98,
+      transition: {
+        x: { type: "tween" as const, ease: "easeInOut", duration: 0.5 },
+        opacity: { duration: 0.3 },
+        scale: { duration: 0.3 },
+      },
+    }),
   };
+  
+  
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => {
@@ -193,14 +208,10 @@ export default function MaterialsCarousel() {
                       isMobile ? 'w-full max-w-[320px]' : isMedium ? 'flex-1 w-full max-w-[380px]' : 'flex-1 w-full max-w-[350px]'
                     }`}
                     custom={direction}
-                    variants={slideVariants}
+                    variants={slideVariants as Variants}
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 }
-                    }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={1}
