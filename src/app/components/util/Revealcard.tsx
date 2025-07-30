@@ -32,7 +32,6 @@ export default function RevealCard({ title, description, image, width = 768, hei
         style={{ transformStyle: "preserve-3d" }}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-    
       >
         {/* Front of card */}
         <div 
@@ -42,8 +41,8 @@ export default function RevealCard({ title, description, image, width = 768, hei
             WebkitBackfaceVisibility: "hidden"
           }}
         >
-          <div className="bg-white border border-gray-200 shadow-md p-4 h-full w-full">
-            <div className="relative w-full h-[340px] md:h-[400px] overflow-hidden group cursor-pointer">
+          <div className="bg-white border border-gray-200 shadow-md p-4 h-full w-full flex flex-col">
+            <div className="relative w-full h-[340px] md:h-[400px] overflow-hidden group cursor-pointer flex-shrink-0">
               <Image
                 src={image}
                 alt={title}
@@ -66,13 +65,13 @@ export default function RevealCard({ title, description, image, width = 768, hei
                 </div>
               </div>
             </div>
-            <h3 className="text-sm font-semibold text-gray-800 text-center mt-4">{title}</h3>
+            <h3 className="text-sm font-semibold text-gray-800 text-center mt-4 flex-shrink-0">{title}</h3>
           </div>
         </div>
 
         {/* Back of card */}
         <div 
-          className="absolute w-full h-full "
+          className="absolute w-full h-full"
           style={{ 
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
@@ -80,7 +79,7 @@ export default function RevealCard({ title, description, image, width = 768, hei
           }}
         >
           <div className="bg-white border border-gray-200 shadow-md p-4 h-full w-full flex flex-col justify-center items-center">
-            <div className="text-center">
+            <div className="text-center px-2">
               <h3 className="text-lg font-semibold text-gray-800 mb-3">{title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
             </div>
