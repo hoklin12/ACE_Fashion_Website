@@ -1,15 +1,22 @@
-
 "use client";
 
 import Image from "next/image";
 import { features } from "@/data/features";
 import { useEffect, useRef, useState } from "react";
 
-const groupedByCategory = features.reduce<Record<string, typeof features>>((acc, product) => {
-  acc[product.category] = acc[product.category] || [];
-  acc[product.category].push(product);
-  return acc;
-}, {});
+const groupedByCategory = features.reduce<Record<string, typeof features>>(
+  (acc, product) => {
+    acc[product.category] = acc[product.category] || [];
+    acc[product.category].push(product);
+    return acc;
+  },
+  {}
+);
+
+// Sort categories by item count (most items first)
+const sortedCategories = Object.entries(groupedByCategory).sort(
+  ([, itemsA], [, itemsB]) => itemsB.length - itemsA.length
+);
 
 export default function Feature() {
   const scrollContainersRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -18,9 +25,11 @@ export default function Feature() {
   useEffect(() => {
     if (window.innerWidth < 768) return;
 
-    const containers = scrollContainersRef.current.filter(Boolean) as HTMLDivElement[];
+    const containers = scrollContainersRef.current.filter(
+      Boolean
+    ) as HTMLDivElement[];
 
-    containers.forEach(container => {
+    containers.forEach((container) => {
       if (container.scrollWidth > container.clientWidth) {
         const scrollAmount = 100;
         const animation = container.animate(
@@ -28,12 +37,12 @@ export default function Feature() {
             { scrollLeft: 0 },
             { scrollLeft: -scrollAmount },
             { scrollLeft: scrollAmount },
-            { scrollLeft: 0 }
+            { scrollLeft: 0 },
           ],
           {
             duration: 1500,
-            easing: 'ease-in-out',
-            delay: 1000
+            easing: "ease-in-out",
+            delay: 1000,
           }
         );
 
@@ -48,16 +57,18 @@ export default function Feature() {
 
   const handleImageClick = (id: string) => {
     if (window.innerWidth < 768) {
-      setActiveImageId(prev => (prev === id ? null : id));
+      setActiveImageId((prev) => (prev === id ? null : id));
     }
   };
 
   return (
     <section id="features" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-12">
-        <h2 className="text-4xl font-bold text-gray-900 text-center mb-10">Featured Clothing</h2>
+        <h2 className="text-4xl font-bold text-gray-900 text-center mb-10">
+          Featured Clothing
+        </h2>
 
-        {Object.entries(groupedByCategory).map(([category, items], index) => (
+        {sortedCategories.map(([category, items], index) => (
           <div key={category} className="mb-12">
             <h3 className="mb-10">
               <span className="inline-block  backdrop-blur-sm px-4 py-2 text-3xl font-semibold text-gray-800">
@@ -69,8 +80,8 @@ export default function Feature() {
               <div className="hidden md:block absolute -left-5 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
               <div className="hidden md:block absolute -right-5 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
-              <div 
-                ref={el => setScrollContainerRef(el, index)}
+              <div
+                ref={(el) => setScrollContainerRef(el, index)}
                 className="overflow-x-auto pb-4 scrollbar-hide"
               >
                 <div className="flex gap-6 md:gap-10 w-max px-4 md:px-0">
@@ -91,7 +102,9 @@ export default function Feature() {
                             width={680}
                             height={1024}
                             className={`object-contain  transition-opacity duration-300 ${
-                              isActive ? "opacity-0 md:opacity-100" : "opacity-100"
+                              isActive
+                                ? "opacity-0 md:opacity-100"
+                                : "opacity-100"
                             }`}
                           />
                           <Image
@@ -100,15 +113,21 @@ export default function Feature() {
                             width={680}
                             height={1024}
                             className={`object-contain absolute top-0 left-0 transition-opacity duration-300 ${
-                              isActive ? "opacity-100" : "opacity-0 md:hover:opacity-100"
+                              isActive
+                                ? "opacity-100"
+                                : "opacity-0 md:hover:opacity-100"
                             }`}
                           />
                         </div>
 
                         {/* Title + Description */}
                         <div className="p-4 flex-1 flex flex-col justify-start text-center">
-                          <h4 className="text-base font-semibold text-gray-800">{product.title}</h4>
-                          <p className="text-sm text-gray-600 mt-2">{product.description}</p>
+                          <h4 className="text-base font-semibold text-gray-800">
+                            {product.title}
+                          </h4>
+                          <p className="text-sm text-gray-600 mt-2">
+                            {product.description}
+                          </p>
                         </div>
                       </div>
                     );

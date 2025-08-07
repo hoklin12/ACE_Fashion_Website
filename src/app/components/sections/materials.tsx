@@ -7,34 +7,34 @@ import RevealCard from "@/app/components/util/Revealcard";
 
 const materials = [
   {
-    title: "Organic Cotton",
-    description: "Eco-friendly and soft for daily wear.",
-    image: "/material.jpg",
+    title: "99% Polyester 1% Carbon",
+    description:
+      "High-performance fabric with carbon fiber technology for enhanced durability and anti-static properties. Perfect for technical and workwear applications.",
+    image: "/Material/mat_99polyester_1carbon.png",
   },
   {
-    title: "Recycled Polyester",
-    description: "Made from recycled bottles.",
-    image: "/material1.jpg",
+    title: "CVC 85% Cotton 15% Polyester",
+    description:
+      "Chief Value Cotton blend offering the comfort of cotton with the durability of polyester. Ideal for everyday wear and professional uniforms.",
+    image: "/Material/mat_cvc_85cotton_15poly.png",
   },
   {
-    title: "Organic Cotton",
-    description: "Eco-friendly and soft for daily wear.",
-    image: "/material2.jpg",
+    title: "Knitted Fabric",
+    description:
+      "Soft, flexible knitted material that provides excellent stretch and comfort. Perfect for activewear and casual clothing.",
+    image: "/Material/mat_knittedfabric.png",
   },
   {
-    title: "Recycled Polyester",
-    description: "Made from recycled bottles.",
-    image: "/material3.jpg",
+    title: "Plain Weave",
+    description:
+      "Classic plain weave fabric offering timeless appeal and versatility. Suitable for professional wear and formal occasions.",
+    image: "/Material/mat_plain.png",
   },
   {
-    title: "Organic Cotton",
-    description: "Eco-friendly and soft for daily wear.",
-    image: "/material4.jpg",
-  },
-  {
-    title: "Recycled Polyester",
-    description: "Made from recycled bottles.",
-    image: "/material5.jpg",
+    title: "Twill Weave",
+    description:
+      "Diagonal weave pattern creating a strong, durable fabric with excellent drape. Popular for workwear and casual fashion.",
+    image: "/Material/mat_twill.png",
   },
 ];
 
@@ -153,7 +153,7 @@ export default function MaterialsCarousel() {
       transition: {
         type: "spring",
         stiffness: 400,
-        damping: 25,
+        damping: 100,
       },
     },
     collapsed: {
@@ -161,7 +161,7 @@ export default function MaterialsCarousel() {
       transition: {
         type: "spring",
         stiffness: 400,
-        damping: 25,
+        damping: 100,
       },
     },
   };
