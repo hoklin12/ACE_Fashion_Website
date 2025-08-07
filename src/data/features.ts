@@ -93,7 +93,7 @@ export const features: Product[] = [
     description: "Professional lab coat for medical and laboratory use.",
     image: "/Clothes/lab_coat/lab_coat_1.png",
     hoverImage: "/Clothes/lab_coat/lab_coat_2.png",
-    category: "Lab Coats",
+    category: "Long Sleeve & Coats",
   },
 
   // Work Wear (2 items)
@@ -103,7 +103,7 @@ export const features: Product[] = [
     description: "Durable workwear for industrial and construction work.",
     image: "/Clothes/worker/worker_1.png",
     hoverImage: "/Clothes/worker/worker_2.png",
-    category: "Work Wear",
+    category: "Long Sleeve & Coats",
   },
 
   // Long Sleeve (2 items)
@@ -114,14 +114,14 @@ export const features: Product[] = [
       "Comfortable long sleeve shirt for professional and casual wear.",
     image: "/Clothes/long_sleeve/long_sleeve_1.png",
     hoverImage: "/Clothes/long_sleeve/long_sleeve_2.png",
-    category: "Long Sleeve & Jacket",
+    category: "Long Sleeve & Coats",
   },
   {
     id: "7",
-    title: "Professional Jacket",
+    title: "Jacket",
     description: "Stylish jacket perfect for business and formal wear.",
     image: "/Clothes/jacket/jacket.png",
     hoverImage: "/Clothes/jacket/jacket.png",
-    category: "Long Sleeve & Jacket",
+    category: "Long Sleeve & Coats",
   },
 ];
