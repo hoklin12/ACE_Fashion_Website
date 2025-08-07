@@ -69,7 +69,7 @@ export default function Feature() {
         </h2>
 
         {sortedCategories.map(([category, items], index) => (
-          <div key={category} className="mb-12">
+          <div key={category} id={category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')} className="mb-12">
             <h3 className="mb-10">
               <span className="inline-block  backdrop-blur-sm px-4 py-2 text-3xl font-semibold text-gray-800">
                 {category}

@@ -12,11 +12,15 @@ export default function Footer() {
         "T-Shirts & Polo",
         "Lab Coats",
         "Work Wear",
-        "Long Sleeve",
-        "Jackets",
+        "Long Sleeve & Jacket",
       ],
     },
   ];
+
+  // Helper function to convert category names to IDs that match Features component
+  const categoryToId = (category: string) => {
+    return category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+  };
 
   return (
     <footer className="relative bg-black border-t border-white/10">
@@ -110,7 +114,7 @@ export default function Footer() {
               {footerSections[0].links.map((link, linkIndex) => (
                 <Link
                   key={linkIndex}
-                  href="#"
+                  href={`#${categoryToId(link)}`}
                   className="text-gray-400 hover:text-indigo-600 transition-colors duration-300 text-xs bg-gray-800 px-2 py-1 rounded"
                 >
                   {link}
