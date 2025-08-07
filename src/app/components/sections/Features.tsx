@@ -80,11 +80,11 @@ export default function Feature() {
                     return (
                       <div
                         key={product.id}
-                        className="w-[280px] sm:w-[300px] md:w-[380px] h-[430px] md:h-[480px] flex-shrink-0 bg-white overflow-hidden flex flex-col shadow-sm"
+                        className="w-[280px] sm:w-[300px] md:w-[380px] h-[373px] sm:h-[400px] md:h-[507px] flex-shrink-0 bg-white overflow-hidden flex flex-col shadow-sm"
                         onClick={() => handleImageClick(product.id)}
                       >
                         {/* Image Container */}
-                        <div className="relative w-full h-[340px] md:h-[400px] overflow-hidden">
+                        <div className="relative w-full h-[300px] sm:h-[320px] md:h-[420px] overflow-hidden">
                           <Image
                             src={product.image}
                             alt={product.title}
