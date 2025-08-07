@@ -77,7 +77,7 @@ export default function MaterialsCarousel() {
         setCurrentIndex(
           (prev) => (prev + newDirection + totalPages) % totalPages
         );
-      }, 100);
+      }, 300);
     } else {
       setDirection(newDirection);
       setCurrentIndex(
@@ -130,7 +130,7 @@ export default function MaterialsCarousel() {
       y: 15,
       scale: 0.98,
       transition: {
-        duration: 0.2,
+        duration: 0.3,
         ease: [0.55, 0.055, 0.675, 0.19],
       },
     },
@@ -139,7 +139,7 @@ export default function MaterialsCarousel() {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.25,
+        duration: 0.3,
         ease: [0.25, 0.46, 0.45, 0.94],
         delay: 0.1,
       },
@@ -200,14 +200,16 @@ export default function MaterialsCarousel() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="relative h-[480px] flex items-center justify-center">
+        <div className="relative h-[480px] md:h-[480px] flex items-center justify-center">
           {isMobile ? (
-            <div className="flex gap-4 overflow-x-auto scrollbar-hide py-4 w-full">
-              {materials.map((material, i) => (
-                <div key={i} className="h-[373px] w-[280px] flex-shrink-0">
-                  <RevealCard {...material} />
-                </div>
-              ))}
+            <div className="w-full h-full">
+              <div className="flex gap-4 overflow-x-auto scrollbar-hide py-4 px-4 h-full items-center">
+                {materials.map((material, i) => (
+                  <div key={i} className="h-[420px] w-[300px] flex-shrink-0">
+                    <RevealCard {...material} />
+                  </div>
+                ))}
+              </div>
             </div>
           ) : (
             <AnimatePresence initial={false} custom={direction} mode="wait">
